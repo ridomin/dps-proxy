@@ -6,14 +6,7 @@ export const createHmac = async (key, msg) => {
   return hmac.digest('base64')
 }
 
-export/**
-   * @param {string} resourceUri
-   * @param {string} signingKey
-   * @param {string | null} policyName
-   * @param {number} expiresInMins
-   * @returns {Promise<string>}
-   */
-async function generateSasToken (resourceUri, signingKey, policyName, expiresInMins) {
+export async function generateSasToken (resourceUri, signingKey, policyName, expiresInMins) {
   resourceUri = encodeURIComponent(resourceUri)
   let expires = (Date.now() / 1000) + expiresInMins * 60
   expires = Math.ceil(expires)

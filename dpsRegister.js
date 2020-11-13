@@ -1,9 +1,10 @@
 import { generateSasToken } from './hmac.js'
 import fetch from 'node-fetch'
 
+const sleep = (delay) => new Promise(resolve => setTimeout(resolve, delay))
+
 export const register = async (scopeId, deviceId, deviceKey, modelId) => {
   // deviceKey = await createHmac(masterKey, deviceId)
-
   const base = 'https://global.azure-devices-provisioning.net/'
   const path = `${scopeId}/registrations/${deviceId}`
   const url = `${base}${path}/register?api-version=2019-03-31`
@@ -24,15 +25,14 @@ export const register = async (scopeId, deviceId, deviceKey, modelId) => {
   if (response && response.message === 'Unauthorized') {
     return response
   } else {
-    console.log(response)
     let status = response.status
-
     let provResult = {}
-    while (status === 'assigning') {
+    let maxRetries = 10
+    while (status === 'assigning' && maxRetries-- > 0) {
       const opid = response.operationId
       const statusUrl = `${base}${path}/operations/${opid}?api-version=2019-03-31`
-      setTimeout(() => console.log('.w.'), 1000)
-      console.log(statusUrl)
+      console.log(1000 * (10 - maxRetries), statusUrl)
+      await sleep(1000 * (10 - maxRetries))
       const resp = await fetch(statusUrl, {
         method: 'GET',
         headers: {

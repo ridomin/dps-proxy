@@ -14,7 +14,6 @@ app.get('/register', async (req, res) => {
   console.log(deviceId, deviceKey)
   if (scopeId && deviceId && deviceKey && modelId) {
     const result = await register(scopeId, deviceId, deviceKey, modelId)
-    console.log(result)
     res.json(result)
     res.end()
   } else {
