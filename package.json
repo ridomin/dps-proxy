@@ -2,12 +2,24 @@
   "name": "dps-proxy",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridomin/dps-proxy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ridomin/dps-proxy/issues"
+  },
+  "homepage": "https://github.com/ridomin/dps-proxy#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {}
+  }
 }
