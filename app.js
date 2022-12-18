@@ -3,7 +3,7 @@ import { register } from './dpsRegister.js'
 const app = express()
 const port = 3000
 
-// http://localhost:3000/register?scopeId=0ne001617A2&deviceId=dev03&deviceKey=Xu3J81GLuELeAGQpdVdGGrWoJ/1Jl/gvd3mVDRTlB4c=&modelId=dtmi:Advantech:AIIS_3410P;1
+// http://localhost:3000/register?scopeId=0ne0083E236&deviceId=dev01&deviceKey=MitioajcTQN4yMLVBTfIAN1omGtZP3knqEoE8yZ4I5c=&modelId=dtmi:Advantech:AIIS_3410P;1
 
 app.get('/register', async (req, res) => {
   const scopeId = req.query.scopeId
