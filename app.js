@@ -1,7 +1,7 @@
 import express from 'express'
 import { register } from './dpsRegister.js'
 const app = express()
-const port = 3000
+const port = process.env.PORT || 80
 
 // http://localhost:3000/register?scopeId=0ne0083E236&deviceId=dev01&deviceKey=MitioajcTQN4yMLVBTfIAN1omGtZP3knqEoE8yZ4I5c=&modelId=dtmi:Advantech:AIIS_3410P;1
 
@@ -23,5 +23,5 @@ app.get('/register', async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`dps-proxy app listening at http://localhost:${port}`)
 })
